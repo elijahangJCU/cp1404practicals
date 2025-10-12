@@ -28,3 +28,14 @@ numbers + [6, 5, 3] = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 # print(7 in numbers)
 # print("3" in numbers)
 # print(numbers + [6, 5, 3])
+
+
+numbers[0] = "ten"
+numbers[-1] = 1
+print(numbers[2:])
+
+is_in_numbers = 9 in numbers
+if is_in_numbers == False:
+    print("There is no 9")
+else:
+    print("There is 9")
