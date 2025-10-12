@@ -29,13 +29,13 @@ numbers + [6, 5, 3] = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
 # print("3" in numbers)
 # print(numbers + [6, 5, 3])
 
+# Modify and test
 
 numbers[0] = "ten"
 numbers[-1] = 1
 print(numbers[2:])
 
-is_in_numbers = 9 in numbers
-if is_in_numbers == False:
-    print("There is no 9")
-else:
+if 9 in numbers:
     print("There is 9")
+else:
+    print("There is no 9")
