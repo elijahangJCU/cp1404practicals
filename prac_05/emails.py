@@ -1,7 +1,7 @@
 """
 Emails
 Estimate: 35 minutes
-Actual:
+Actual: 40 minutes
 """
 
 email_input = input("Email: ").lower()
