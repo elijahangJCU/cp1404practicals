@@ -17,3 +17,7 @@ class ProgrammingLanguage:
 
     def __str__(self):
         return f"{self.name}, {self.typing} Typing, Reflection={self.reflection}, First appeared in {self.year}"
+
+if __name__ == "__main__":
+    test_language = ProgrammingLanguage("Test", "Dynamic", True, 1995)
+    print(test_language)
