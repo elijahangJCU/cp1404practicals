@@ -1,7 +1,7 @@
 """
 Practical 6 Languages
 Estimates time to complete: 20 mins
-Actual time taken to complete:
+Actual time taken to complete: 25 mins
 """
 
 from programming_language import ProgrammingLanguage
