@@ -7,6 +7,62 @@ Actual time taken to complete: 1h 15 mins
 import datetime
 from project import Project
 
+def main():
+    print("Welcome to Pythonic Project Management")
+    projects = load_projects_from_file("projects.txt")
+    print(f"Loaded {len(projects)} projects from projects.txt")
+    default_filename = "projects.txt"
+
+    while True:
+        print("\nMenu:")
+        print("- (L)oad projects")
+        print("- (S)ave projects")
+        print("- (D)isplay projects")
+        print("- (F)ilter projects by date")
+        print("- (A)dd new project")
+        print("- (U)pdate project")
+        print("- (Q)uit")
+        choice = input("Choose an option: ").strip().upper()
+
+        if choice == 'L':
+            filename = input(f"Enter filename to load from (default: {default_filename}): ").strip()
+            if not filename:
+                filename = default_filename
+            loaded_projects = load_projects_from_file(filename)
+            if loaded_projects:
+                projects = loaded_projects
+                print(f"Loaded {len(projects)} projects from {filename}.")
+            else:
+                print("No projects loaded.")
+        elif choice == 'S':
+            filename = input(f"Enter filename to save to (default: {default_filename}): ").strip()
+            if not filename:
+                filename = default_filename
+            save_projects_to_file(filename, projects)
+            print(f"Projects saved to {filename}.")
+        elif choice == 'F':
+            if projects:
+                filter_projects(projects)
+            else:
+                print("No projects to filter.")
+        elif choice == 'D':
+            display_projects(projects)
+        elif choice == 'A':
+            add_new_project(projects)
+        elif choice == 'U':
+            update_project(projects)
+        elif choice == 'Q':
+            save_choice = input("Would you like to save to projects.txt? ").strip()
+            if save_choice and save_choice[0].upper() == 'Y':
+                save_projects_to_file(default_filename, projects)
+                print(f"Projects saved to {default_filename}.")
+            print("Thank you for using custom-built project management software.")
+            break
+        else:
+            print("Invalid option, please try again.")
+
+
+
 def parse_date(date_str):
     """Convert a string in dd/mm/yyyy format to a date object."""
     return datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
@@ -168,56 +224,4 @@ def update_project(project_list):
             print("Invalid priority. Keeping previous value.")
 
 if __name__ == "__main__":
-    # Assuming Project class and projects list are defined elsewhere
-    print("Welcome to Pythonic Project Management")
-    projects = load_projects_from_file("projects.txt")
-    print(f"Loaded {len(projects)} projects from projects.txt")
-    default_filename = "projects.txt"
-
-    while True:
-        print("\nMenu:")
-        print("- (L)oad projects")
-        print("- (S)ave projects")
-        print("- (D)isplay projects")
-        print("- (F)ilter projects by date")
-        print("- (A)dd new project")
-        print("- (U)pdate project")
-        print("- (Q)uit")
-        choice = input("Choose an option: ").strip().upper()
-
-        if choice == 'L':
-            filename = input(f"Enter filename to load from (default: {default_filename}): ").strip()
-            if not filename:
-                filename = default_filename
-            loaded_projects = load_projects_from_file(filename)
-            if loaded_projects:
-                projects = loaded_projects
-                print(f"Loaded {len(projects)} projects from {filename}.")
-            else:
-                print("No projects loaded.")
-        elif choice == 'S':
-            filename = input(f"Enter filename to save to (default: {default_filename}): ").strip()
-            if not filename:
-                filename = default_filename
-            save_projects_to_file(filename, projects)
-            print(f"Projects saved to {filename}.")
-        elif choice == 'F':
-            if projects:
-                filter_projects(projects)
-            else:
-                print("No projects to filter.")
-        elif choice == 'D':
-            display_projects(projects)
-        elif choice == 'A':
-            add_new_project(projects)
-        elif choice == 'U':
-            update_project(projects)
-        elif choice == 'Q':
-            save_choice = input("Would you like to save to projects.txt? ").strip()
-            if save_choice and save_choice[0].upper() == 'Y':
-                save_projects_to_file(default_filename, projects)
-                print(f"Projects saved to {default_filename}.")
-            print("Thank you for using custom-built project management software.")
-            break
-        else:
-            print("Invalid option, please try again.")
+    main()
