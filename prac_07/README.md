@@ -14,3 +14,4 @@ I’m Elijah, a student learning about software design, object-oriented programm
 ## Helpful Resources
 - [Programming Patterns](https://github.com/CP1404/ProgrammingPatterns) – Examples and explanations of clean, reusable code structures.
 - [CP1404 Practicals Instructions](https://github.com/CP1404/Practicals/tree/master/prac_07) – Official instructions and reference material for all practicals.
+
