@@ -63,6 +63,32 @@ def save_projects_to_file(filename, projects):
     except IOError as e:
         print(f"Error writing to file '{filename}': {e}")
 
+def display_projects(projects):
+    """Display projects categorized into incomplete and completed, sorted by priority."""
+    if not projects:
+        print("No projects to display.")
+        return
+
+    incomplete_projects = [p for p in projects if p.completion_percentage < 100]
+    completed_projects = [p for p in projects if p.completion_percentage == 100]
+
+    incomplete_projects.sort(key=lambda p: p.priority)
+    completed_projects.sort(key=lambda p: p.priority)
+
+    if incomplete_projects:
+        print("Incomplete projects:")
+        for p in incomplete_projects:
+            print(f"{p.name}, Start: {p.start_date.strftime('%d/%m/%Y')}, Priority: {p.priority}, Cost: ${p.cost_estimate:.2f}, Completion: {p.completion_percentage}%")
+    else:
+        print("No incomplete projects.")
+
+    if completed_projects:
+        print("Completed projects:")
+        for p in completed_projects:
+            print(f"{p.name}, Start: {p.start_date.strftime('%d/%m/%Y')}, Priority: {p.priority}, Cost: ${p.cost_estimate:.2f}, Completion: {p.completion_percentage}%")
+    else:
+        print("No completed projects.")
+
 if __name__ == "__main__":
     # Assuming Project class and projects list are defined elsewhere
     projects = []
@@ -73,6 +99,7 @@ if __name__ == "__main__":
         print("(L)oad projects")
         print("(S)ave projects")
         print("(F)ilter projects by start date")
+        print("(D)isplay projects")
         print("(Q)uit")
         choice = input("Choose an option: ").strip().upper()
 
@@ -97,6 +124,8 @@ if __name__ == "__main__":
                 filter_projects(projects)
             else:
                 print("No projects to filter.")
+        elif choice == 'D':
+            display_projects(projects)
         elif choice == 'Q':
             print("Exiting program.")
             break
