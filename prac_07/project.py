@@ -4,7 +4,7 @@ import datetime
 Module for managing projects with attributes such as name, start date, priority,
 cost estimate, and completion percentage.
 
-Time estimate: TBD
+Time estimate: 15 mins
 """
 
 class Project:
