@@ -9,7 +9,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
 
-__author__ = "Lindsay Ward"
+__author__ = "Elijah Ang"
 
 
 class SquareNumberApp(App):
