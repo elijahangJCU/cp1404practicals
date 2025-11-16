@@ -14,15 +14,14 @@ class BoxLayoutDemo(App):
         return Builder.load_file("box_layout.kv")
 
     def handle_greet(self):
-        """Update the output label with the entered name."""
         name = self.root.ids.input_name.text
         self.root.ids.output_label.text = f"Hello {name}"
 
     def handle_clear(self):
-        """Clear both the input field and the output label."""
         self.root.ids.input_name.text = ""
         self.root.ids.output_label.text = ""
 
 
 if __name__ == "__main__":
     BoxLayoutDemo().run()
+
