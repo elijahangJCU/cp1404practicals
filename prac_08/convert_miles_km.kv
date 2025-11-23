@@ -1,0 +1,48 @@
+BoxLayout:
+    orientation: "vertical"
+    padding: 20
+    spacing: 20
+
+    # --------------------------
+    # TOP SECTION (blue box)
+    # --------------------------
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+
+        TextInput:
+            id: input_miles
+            text: "34"
+            font_size: 40
+            multiline: False
+            on_text: app.text_changed(self.text)
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_x: 0.4
+            spacing: 10
+
+            Button:
+                text: "Up"
+                on_press: app.handle_increment(input_miles.text, 1)
+
+            Button:
+                text: "Down"
+                on_press: app.handle_increment(input_miles.text, -1)
+
+    # --------------------------
+    # CONVERT BUTTON
+    # --------------------------
+    Button:
+        text: "Convert miles to km"
+        font_size: 28
+        on_press: app.handle_convert(input_miles.text)
+
+    # --------------------------
+    # OUTPUT LABEL
+    # --------------------------
+    Label:
+        text: app.km_output
+        color: (1, 1, 0, 1)
+        font_size: 40
+
