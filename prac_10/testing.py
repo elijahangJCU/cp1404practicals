@@ -9,7 +9,7 @@ from prac_06.car import Car
 
 def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
-    return s * n
+    return " ".join([s] * n)
 
 
 def is_long_word(word, length=5):
@@ -22,7 +22,7 @@ def is_long_word(word, length=5):
     >>> is_long_word("Python", 6)
     True
     """
-    return len(word) > length
+    return len(word) >= length
 
 
 def run_tests():
@@ -46,13 +46,16 @@ def run_tests():
     # using the value passed in or the default
     # You should test both of these
     car = Car(fuel=10)
+    assert car.fuel == 10, "Car does not set fuel correctly when provided"
+    car_default = Car()
+    assert car_default.fuel == 0, "Car does not set default fuel correctly"
 
 
 run_tests()
 
 # TODO: 3. Uncomment the following line and run the doctests
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
-# doctest.testmod()
+doctest.testmod()
 
 # TODO: 4. Fix the failing is_long_word function
 # (Don't change the tests, change the function!)
@@ -66,3 +69,21 @@ run_tests()
 # and one more that you decide is a useful test.
 # Run your doctests and watch the tests fail.
 # Then write the body of the function so that the tests pass.
+def format_sentence(phrase):
+    """
+    Format a phrase so it starts with a capital and ends with a single full stop.
+
+    >>> format_sentence("hello")
+    'Hello.'
+    >>> format_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> format_sentence("multiple words here")
+    'Multiple words here.'
+    """
+    phrase = phrase.strip()
+    if not phrase:
+        return ""
+    phrase = phrase[0].upper() + phrase[1:]
+    if not phrase.endswith("."):
+        phrase += "."
+    return phrase
