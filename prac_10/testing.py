@@ -1,6 +1,8 @@
 """
 CP1404/CP5632 Practical
 Testing code using assert and doctest
+Estimated time to complete: 20 mins
+Actual time taken to complete: 20 mins
 """
 
 import doctest
